@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Web Development Quiz App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="quiz.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<main class="container">
+
+   
+    <section id="landing" class="card">
+        <header>
+            <h1>Web Development Quiz</h1>
+            <p>20 Questions • 20 Minutes • HTML, CSS, JS</p>
+        </header>
+
+        <div class="actions">
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+    </section>
+
+    <section id="quiz" class="card" style="display:none;">
+
+       
+        <header class="quiz-header">
+            <div id="timer" class="timer"></div>
+        </header>
+
+        
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+       
+        <h3 id="question"></h3>
+
+       
+        <div id="options"></div>
+
+        
+        <nav class="controls">
+        <button onclick="prevQuestion()">Previous</button>
+        <button onclick="nextQuestion()">Next</button>
+        <button onclick="submitQuiz()" id="submitBtn">Submit</button>
+        </nav> 
+
+    </section>
+
+    
+    <section id="result" class="card" style="display:none;">
+
+        <header>
+            <h2 id="score"></h2>
+            <h3 id="status"></h3>
+        </header>
+
+       
+        <div class="result-summary">
+            <div class="stat">
+                <span>✔ Correct</span>
+                <h3 id="correctCount"></h3>
+            </div>
+            <div class="stat">
+                <span>❌ Wrong</span>
+                <h3 id="wrongCount"></h3>
+            </div>
+        </div>
+
+        <!-- Review -->
+        <section class="review-section">
+            <h3>Review</h3>
+            <div id="review"></div>
+        </section>
+
+        <div class="actions">
+            <button onclick="resetQuiz()">Restart Quiz</button>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
