@@ -26,30 +26,39 @@
 
     <section id="quiz" class="card" style="display:none;">
 
-       
-        <header class="quiz-header">
-            <div id="timer" class="timer"></div>
-        </header>
+    <div class="quiz-layout">
 
-        
-        <div class="progress">
-            <div id="progressBar" class="progress-bar"></div>
+        <!-- LEFT TRACKER -->
+        <div class="tracker-container">
+    <h3 class="tracker-title">Quiz Map</h3>
+    <div id="tracker" class="tracker"></div>
+</div>
+
+        <!-- RIGHT QUIZ CONTENT -->
+        <div class="quiz-content">
+
+            <header class="quiz-header">
+                <div id="timer" class="timer"></div>
+            </header>
+
+            <div class="progress">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <h3 id="question"></h3>
+
+            <div id="options"></div>
+
+            <nav class="controls">
+                <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+                <button id="nextBtn" onclick="nextQuestion()">Next</button>
+                <button onclick="submitQuiz()" id="submitBtn">Submit</button>
+            </nav>
+
         </div>
+    </div>
 
-       
-        <h3 id="question"></h3>
-
-       
-        <div id="options"></div>
-
-        
-        <nav class="controls">
-        <button onclick="prevQuestion()">Previous</button>
-        <button onclick="nextQuestion()">Next</button>
-        <button onclick="submitQuiz()" id="submitBtn">Submit</button>
-        </nav> 
-
-    </section>
+</section>
 
     
     <section id="result" class="card" style="display:none;">
