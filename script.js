@@ -3,36 +3,36 @@ const TIME_LIMIT = 1200;
 
 
 const questionBank = [
-{q:"What does HTML stand for?",o:["Hyper Trainer Marking Language","HyperText Markup Language","HyperText Markdown Language","None"],a:1},
-{q:"Which tag is used for links?",o:["a","link","href","url"],a:0},
-{q:"Which CSS property controls text size?",o:["font-style","text-size","font-size","text-style"],a:2},
-{q:"Which is JS data type?",o:["String","Number","Boolean","All"],a:3},
-{q:"Which symbol for comments in JS?",o:["//","!-- --","#","**"],a:0},
-{q:"CSS stands for?",o:["Color Style Sheet","Cascading Style Sheet","Creative Style","None"],a:1},
-{q:"Which HTML tag for image?",o:["img","image","pic","src"],a:0},
-{q:"JS used for?",o:["Styling","Structure","Logic","Database"],a:2},
-{q:"Which property for background color?",o:["bgcolor","background-color","color","bg"],a:1},
-{q:"Which keyword declares variable?",o:["var","let","const","All"],a:3},
-{q:"Which event on click?",o:["onhover","onclick","onchange","onload"],a:1},
-{q:"Flexbox is used for?",o:["Layout","Animation","Database","Security"],a:0},
-{q:"Which HTML tag for table?",o:["table","tab","tr","td"],a:0},
-{q:"Which CSS unit is relative?",o:["px","cm","rem","mm"],a:2},
-{q:"JS runs on?",o:["Browser","Server","Both","None"],a:2},
-{q:"DOM stands for?",o:["Document Object Model","Data Object","Doc Model","None"],a:0},
-{q:"Which tag for heading?",o:["h1","head","heading","h"],a:0},
-{q:"Which method selects element?",o:["getElementById","querySelector","Both","None"],a:2},
-{q:"CSS Grid is used for?",o:["Layout","Animation","Fonts","None"],a:0},
-{q:"Which is not JS framework?",o:["React","Angular","Vue","Django"],a:3},
-{q:"Which HTML tag is used for paragraphs?",o:["p","para","text","pg"],a:0},
-{q:"Which attribute is used for image source?",o:["src","href","link","path"],a:0},
-{q:"Which CSS property controls margin?",o:["padding","spacing","margin","border"],a:2},
-{q:"Which operator is used for equality (strict) in JS?",o:["=","==","===","!="],a:2},
-{q:"Which function prints output in console?",o:["print()","log()","console.log()","write()"],a:2},
-{q:"Which HTML tag is used for lists?",o:["ul","li","Both","list"],a:2},
-{q:"Which keyword is used for function in JS?",o:["func","function","define","method"],a:1},
-{q:"Which CSS property is used for text color?",o:["font-color","text-color","color","style"],a:2},
-{q:"Which HTML element is used for forms?",o:["form","input","label","fieldset"],a:0},
-{q:"Which JS method converts JSON to object?",o:["JSON.parse()","JSON.stringify()","parseJSON()","toObject()"],a:0}
+{question:"What does HTML stand for?",options:["Hyper Trainer Marking Language","HyperText Markup Language","HyperText Markdown Language","None"],a:1},
+{question:"Which tag is used for links?",options:["a","link","href","url"],a:0},
+{question:"Which CSS property controls text size?",options:["font-style","text-size","font-size","text-style"],a:2},
+{question:"Which is JS data type?",options:["String","Number","Boolean","All"],a:3},
+{question:"Which symbol for comments in JS?",options:["//","!-- --","#","**"],a:0},
+{question:"CSS stands for?",options:["Color Style Sheet","Cascading Style Sheet","Creative Style","None"],a:1},
+{question:"Which HTML tag for image?",options:["img","image","pic","src"],a:0},
+{question:"JS used for?",options:["Styling","Structure","Logic","Database"],a:2},
+{question:"Which property for background color?",options:["bgcolor","background-color","color","bg"],a:1},
+{question:"Which keyword declares variable?",options:["var","let","const","All"],a:3},
+{question:"Which event on click?",options:["onhover","onclick","onchange","onload"],a:1},
+{question:"Flexbox is used for?",options:["Layout","Animation","Database","Security"],a:0},
+{question:"Which HTML tag for table?",options:["table","tab","tr","td"],a:0},
+{question:"Which CSS unit is relative?",options:["px","cm","rem","mm"],a:2},
+{question:"JS runs on?",options:["Browser","Server","Both","None"],a:2},
+{question:"DOM stands for?",options:["Document Object Model","Data Object","Doc Model","None"],a:0},
+{question:"Which tag for heading?",options:["h1","head","heading","h"],a:0},
+{question:"Which method selects element?",options:["getElementById","querySelector","Both","None"],a:2},
+{question:"CSS Grid is used for?",options:["Layout","Animation","Fonts","None"],a:0},
+{question:"Which is not JS framework?",options:["React","Angular","Vue","Django"],a:3},
+{question:"Which HTML tag is used for paragraphs?",options:["p","para","text","pg"],a:0},
+{question:"Which attribute is used for image source?",options:["src","href","link","path"],a:0},
+{question:"Which CSS property controls margin?",options:["padding","spacing","margin","border"],a:2},
+{question:"Which operator is used for equality (strict) in JS?",options:["=","==","===","!="],a:2},
+{question:"Which function prints output in console?",options:["print()","log()","console.log()","write()"],a:2},
+{question:"Which HTML tag is used for lists?",options:["ul","li","Both","list"],a:2},
+{question:"Which keyword is used for function in JS?",options:["func","function","define","method"],a:1},
+{question:"Which CSS property is used for text color?",options:["font-color","text-color","color","style"],a:2},
+{question:"Which HTML element is used for forms?",options:["form","input","label","fieldset"],a:0},
+{question:"Which JS method converts JSON to object?",options:["JSON.parse()","JSON.stringify()","parseJSON()","toObject()"],a:0}
 ];
 
 
@@ -60,10 +60,7 @@ function startQuiz(){
     }
 
    
-    quiz = shuffle([...questionBank]).slice(
-        0,
-        Math.min(SELECTED, questionBank.length)
-    );
+    quiz = shuffle([...questionBank]).slice(0,Math.min(SELECTED, questionBank.length));
 
     answers = new Array(quiz.length).fill(null);
 
@@ -72,6 +69,7 @@ function startQuiz(){
 
     save();
     showQuiz();
+   
 }
 
 function shuffle(a){
@@ -95,13 +93,13 @@ function loadQ(){
 
    
     document.getElementById("question").innerText =
-        (current + 1) + ". " + currentQuestion.q;
+        (current + 1) + ". " + currentQuestion.question;
 
     
     let container = document.getElementById("options");
     container.innerHTML = "";
 
-    currentQuestion.o.forEach((opt, i) => {
+    currentQuestion.options.forEach((opt, i) => {
 
         let label = document.createElement("label");
         label.className = "option";
@@ -134,7 +132,6 @@ function loadQ(){
     updateTracker();
     updateProgress();
 }
-
 
 document.addEventListener("change", e => {
     if(e.target.name === "opt"){
@@ -173,20 +170,37 @@ document.addEventListener("keydown", function(e){
     }
 
     
-    if(["1","2","3","4"].includes(e.key)){
-        let index = parseInt(e.key) - 1;
+    
+if(e.key === "Tab"){
 
-        let options = document.querySelectorAll('input[name="opt"]');
+    let options = document.querySelectorAll('input[name="opt"]');
 
-        if(options[index]){
-            options[index].checked = true;
+    let currentIndex = -1;
 
-            answers[current] = index;
-            save();
-            updateProgress();
-            updateTracker();
+    
+    options.forEach((opt, index) => {
+        if(opt.checked){
+            currentIndex = index;
         }
-    }
+    });
+
+    
+    let nextIndex = (currentIndex + 1) % options.length;
+
+    
+    options[nextIndex].checked = true;
+
+    
+    answers[current] = nextIndex;
+
+    
+    save();
+    updateProgress();
+    updateTracker();
+
+    
+    e.preventDefault();
+}
 
 });
 
@@ -260,15 +274,22 @@ function saveTextAnswers(){
         let selectedAnswer = answers[i];   
 
         if(selectedAnswer === null){
+
             textAnswers[i] = null;   
+
         } else {
-            textAnswers[i] = quiz[i].o[selectedAnswer];   
+
+            textAnswers[i] =
+                quiz[i].options[selectedAnswer];   
         }
     }
 
-    sessionStorage.setItem("textAnswers", JSON.stringify(textAnswers));
+    sessionStorage.setItem(
+        "textAnswers",
+        JSON.stringify(textAnswers)
+    );
+    saveTextAnswers();
 }
-
 
  function startTimer(){
 
@@ -291,9 +312,13 @@ function saveTextAnswers(){
         sessionStorage.setItem("timeLeft", timeLeft);
 
         if(timeLeft <= 0){
-            clearInterval(timer);
-            submitQuiz();
-        }
+
+    clearInterval(timer);
+
+    alert("Time's Up!");
+
+    submitQuiz(true);
+}
 
     }, 1000);
 }
@@ -303,58 +328,53 @@ function save(){
     sessionStorage.setItem("answers", JSON.stringify(answers));
     sessionStorage.setItem("current", current.toString());
     sessionStorage.setItem("timeLeft", timeLeft.toString());
+    
 }
 
 
 
 
-function submitQuiz(){
+function submitQuiz(timeUp = false){
 
-    // Count unanswered questions
+    
     let unanswered = answers.filter(a => a === null).length;
 
-    // Stop submit if questions are unanswered
-    if(unanswered > 0){
+    if(unanswered > 0 && !timeUp){
         alert(`Answer all questions!\nUnanswered: ${unanswered}`);
         return;
     }
 
-    // Stop timer
     clearInterval(timer);
 
     let score = 0;
     let reviewHTML = "";
 
-    // Check each question
     quiz.forEach((q, i) => {
 
-        // User selected answer
         let userAnswer =
             answers[i] != null
-            ? q.o[answers[i]]
+            ? q.options[answers[i]]
             : "Not Answered";
 
-        // Correct answer
         let correctAnswer =
             q.a != null
-            ? q.o[q.a]
+            ? q.options[q.a]
             : "No Correct Answer";
 
-        // Correct answer check
+    
         if(answers[i] === q.a){
 
             score++;
 
         }else{
 
-            // Add wrong answer review
             reviewHTML += `
             
             <div class="review-card">
 
                 <p>
                     <b>Q${i+1}:</b>
-                    ${q.q}
+                    ${q.question}
                 </p>
 
                 <p class="wrong">
@@ -371,34 +391,33 @@ function submitQuiz(){
         }
     });
 
-    // Wrong answers count
     let wrong = quiz.length - score;
 
-    // Hide quiz section
+    
     document.getElementById("quiz").style.display = "none";
 
-    // Show result section
     document.getElementById("result").style.display = "block";
 
-    // Show score
+    
     document.getElementById("score").innerText =
         `Score: ${score}/${quiz.length}`;
 
-    // Pass or fail
+    
     document.getElementById("status").innerText =
         score >= 10 ? "PASS 🎉" : "FAIL ❌";
 
-    // Statistics
+    
     document.getElementById("correctCount").innerText = score;
     document.getElementById("wrongCount").innerText = wrong;
 
-    // Show review
+  
     document.getElementById("review").innerHTML =
         reviewHTML || "<p class='correct'>All answers correct 🎉</p>";
 
-    // Clear saved session
+   
     sessionStorage.clear();
 }
+
 
 function resetQuiz(){
     sessionStorage.clear();
