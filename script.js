@@ -72,14 +72,27 @@ function startQuiz(){
    
 }
 
+
+
+window.addEventListener("load", () => {
+
+    let savedQuiz = sessionStorage.getItem("quiz");
+
+    if(savedQuiz){
+
+        document.getElementById("startBtn").innerText = "Resume Quiz";
+    }
+});
+
+
 function shuffle(a){
     return a.sort(() => Math.random() - 0.5);
 }
 
 
 function showQuiz(){
-    document.getElementById("landing").style.display = "none";
-    document.getElementById("quiz").style.display = "block";
+    document.getElementById("landing").hidden = true;
+    document.getElementById("quiz").hidden = false;
 
     initTracker();
     loadQ();
@@ -145,26 +158,22 @@ document.addEventListener("change", e => {
 
 document.addEventListener("keydown", function(e){
 
-    
-    if(e.key === "ArrowRight" || e.key === "Enter"){
+    if(e.key === "ArrowRight"){
         e.preventDefault();
         nextQuestion();
     }
 
-    
-    if(e.key === "ArrowLeft"){
+    else if(e.key === "ArrowLeft"){
         e.preventDefault();
         prevQuestion();
     }
-    if(e.key === "Enter"){
+
+    else if(e.key === "Enter"){
         e.preventDefault();
 
-        
         if(current === quiz.length - 1){
             submitQuiz();
-        } 
-        
-        else {
+        } else {
             nextQuestion();
         }
     }
@@ -394,17 +403,16 @@ function submitQuiz(timeUp = false){
     let wrong = quiz.length - score;
 
     
-    document.getElementById("quiz").style.display = "none";
+    document.getElementById("quiz").hidden = true;
 
-    document.getElementById("result").style.display = "block";
-
+    document.getElementById("result").hidden = false;
     
     document.getElementById("score").innerText =
         `Score: ${score}/${quiz.length}`;
 
     
     document.getElementById("status").innerText =
-        score >= 10 ? "PASS 🎉" : "FAIL ❌";
+        score >= 10 ? "PASS " : "FAIL ";
 
     
     document.getElementById("correctCount").innerText = score;
